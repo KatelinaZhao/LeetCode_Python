@@ -40,3 +40,39 @@ nums_1 = [4,2,5,7]
 
 S = Solution()
 S.sortArrayByParityII(nums_1)
+
+# But there is some test not work
+# Then I study from the solution
+# NEW Function: enumerate()
+
+class Solution:
+    def sortArrayByParityII(self, nums):
+        l = len(nums)
+        output = [None] * l
+
+        # 2 <= nums.length <= 2 * 104
+        # nums.length is even.
+        if len(nums) % 2 == 0 and len(nums) in range(2,208):
+
+            ind = 0
+            for i, x in enumerate(nums):
+                # 0 <= nums[i] <= 1000
+                if x < 0 or x > 1000:
+                    print(False)
+                elif x % 2 == 0:
+                    output[ind] = x
+                    ind += 2
+                else:
+                    return False
+
+            ind = 1
+            for i, x in enumerate(nums):
+                # 0 <= nums[i] <= 1000
+                if x < 0 or x > 1000:
+                    print(False)
+                elif x % 2 == 1:
+                    output[ind] = x
+                    ind += 2
+                else:
+                    return False
+        return output
